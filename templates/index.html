@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CryptViewer</title>
+        <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    </head>
+    <body>
+        <h2>Open Prices</h2>
+
+        <div id="chart"></div>
+        <script src="{{ url_for('static', filename='chart.js') }}"></script>
+
+        <div id="openP"></div>
+
+        
+        <div style="border: solid gray 1px; padding: 20px; width: 600px; margin-top: 20px ">
+            <h2>Order</h2>
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div style="border: solid red 1px; padding:10px; background: pink; color:red; margin-bottom: 10px;">
+                    {% for message in messages %}
+                        {{ message}}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <form action="/buy" method="POST">
+                <select id='symbol' name='symbol'> 
+                    {% for symbol in symbols %}
+                    <option>{{ symbol['symbol'] }}</option>
+                    {% endfor %}
+                </select>
+                <input type='text' id='quantity' name='quantity' placeholder="eg. 1 contract"/>
+                <input type="submit" name='buy' value="buy"/>
+            </form>
+        </div>
+
+        <h3>Settings</h3>
+        <div id='setttings'>
+            <input type="checkbox">RSI:
+            <input type="text" id="rsi_length" name="rsi_length" placeholder='14'/>
+            Overbought:
+            <input type="text" id="rsi_ob" name="rsi_ob" placeholder='70'/>
+            Oversold:
+            <input type="text" id="rsi_os" name="rsi_os" placeholder='30'/>
+        </div>
+
+        <h2>Balances</h2>
+        
+        <div id="my_balances">
+            <table>
+                {% for balance in my_balances %}
+                <tr>
+                    <td>
+                        {{ balance['asset']}}
+                    </td>
+                    <td>
+                        {{ balance['balance']}}
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+
+    </body>
+</html>
