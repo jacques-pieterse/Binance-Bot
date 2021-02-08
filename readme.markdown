@@ -1,18 +1,27 @@
-# Used Languages:
+# Binance Bot:
+This is my project on a bot that uses Flask to combine front end and backend by using python. The app should display all data of what is happening and any prices and balances neccessary. At this moment the app is only usable with future and coin future accounts. The bot will work by running technical indicators on a chart from lightweight charts made by TradingView that will send signals to binance's API. The bot will only risk 2% of your account balance as the quantity using Isolated margin mode.
+To use this bot:
+1. Create an API key on binance account by going to API management under profile
+2. Open config.py file
+3. Place your API key and API secret in folder
+4. Run app.py
+
+
+## Used Languages:
 - Python
 - HTML
 - JS
 
-# Used Libraries
-## -Python:
+## Used Libraries
+### -Python:
     - python-binance
     - Flask
-## -JS
+### -JS
     - lightweight charts from TradingView
 
-# Tasks
+## Tasks
 
-## Finished tasks :
+### Finished tasks :
 - Creating a frontend layout using lightweight charts and html
 - Created routes for main page, buy, sell and settings wtih Flask
 - Display chart and balance on app main
@@ -28,7 +37,7 @@
 - chart updates with new data from websocket
 - Style a bit of the HTML content (No css folder yet)
 
-## To do:
+### To do:
 - Create a manual way to place and edit indicator on chart
 - Create a way to change symbol data that chart displays
 - Find a strategy/indicators to place on chart and give signals
